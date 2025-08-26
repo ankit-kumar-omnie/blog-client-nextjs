@@ -20,7 +20,7 @@ export default function PostsList() {
   const fetchPosts = async (page: number) => {
     try {
       const res = await fetch(
-        `http://localhost:3000/posts?page=${page}&limit=9`
+        `${process.env.NEXT_PUBLIC_API_URL}/posts?page=${page}&limit=9`
       );
       const data = await res.json();
       setPosts(data.data);

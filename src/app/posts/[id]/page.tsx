@@ -10,7 +10,7 @@ type Post = {
 };
 
 export default async function PostDetailsPage({ params }: { params: { id: string } }) {
-  const res = await fetch(`http://localhost:3000/posts/${params.id}`, { cache: "no-store" });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts/${params.id}`, { cache: "no-store" });
 
   if (!res.ok) return notFound();
 
