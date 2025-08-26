@@ -9,7 +9,9 @@ type Post = {
   createdAt: string;
 };
 
-export default async function PostDetailsPage({ params }: { params: { id: string } }) {
+export default async function PostDetailsPage(props: unknown) {
+  const { params } = props as { params: { id: string } };
+
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts/${params.id}`, { cache: "no-store" });
 
   if (!res.ok) return notFound();
