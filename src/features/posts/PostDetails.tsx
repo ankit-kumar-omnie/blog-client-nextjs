@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "../../styles/PostDetails.module.css";
+import Link from "next/link";
 
 type Post = {
   id: string;
@@ -39,19 +40,30 @@ export default function PostDetails({ post }: { post: Post }) {
   return (
     <>
       {/* Post Details */}
-      <div className={`max-w-3xl mx-auto p-6 space-y-6 ${styles.postDetails__container}`}>
-        <a href="/" className={`${styles.postDetails__back} text-blue-400 hover:text-blue-500`}>
+      <div
+        className={`max-w-3xl mx-auto p-6 space-y-6 ${styles.postDetails__container}`}
+      >
+        <Link
+          href="/"
+          className={`${styles.postDetails__back} text-blue-400 hover:text-blue-500`}
+        >
           &larr; Back to Posts
-        </a>
+        </Link>
 
-        <h1 className={`${styles.postDetails__title} text-white`}>{post.title}</h1>
+        <h1 className={`${styles.postDetails__title} text-white`}>
+          {post.title}
+        </h1>
 
-        <div className={`${styles.postDetails__meta} flex justify-between text-gray-400`}>
+        <div
+          className={`${styles.postDetails__meta} flex justify-between text-gray-400`}
+        >
           <span>By {post.author}</span>
           <span>{new Date(post.createdAt).toLocaleDateString()}</span>
         </div>
 
-        <p className={`${styles.postDetails__content} text-gray-200 whitespace-pre-line`}>
+        <p
+          className={`${styles.postDetails__content} text-gray-200 whitespace-pre-line`}
+        >
           {post.content}
         </p>
       </div>
